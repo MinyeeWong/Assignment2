@@ -1,5 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "title": {
+      "fontSize": 24,        
+      "fontWeight": "bold"
+    },
+    "legend": {
+      "titleFontSize": 14,    
+      "labelFontSize": 12    
+    }
+  },
   "width": 800,
   "height": 600,
   "title": "Domestic Overnight Trips in Australia (Trips per sq km, 2024)",
@@ -38,9 +48,22 @@
           "title": "Trips per sq km (2024)"
         },
         "tooltip": [
-          {"field": "properties.STE_NAME21", "type": "nominal", "title": "State"},
-          {"field": "trips_2024_total", "type": "quantitative", "title": "Total Trips"},
-          {"field": "trips_density", "type": "quantitative", "title": "Trips per sq km", "format": ".2f"}
+          {
+            "field": "properties.STE_NAME21",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "trips_2024_total",
+            "type": "quantitative",
+            "title": "Total Trips"
+          },
+          {
+            "field": "trips_density",
+            "type": "quantitative",
+            "title": "Trips per sq km",
+            "format": ".2f"
+          }
         ]
       }
     },

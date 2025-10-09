@@ -1,5 +1,20 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "title": {
+      "fontSize": 24,        
+      "fontWeight": "bold"
+    },
+    "legend": {
+      "titleFontSize": 14,    
+      "labelFontSize": 12    
+    },
+    "axis": {
+      "titleFontSize": 14,   
+      "titleFontWeight": "bold",
+      "labelFontSize": 12   
+    }
+  },
   "width": 800,
   "height": 500,
   "title": "Domestic Overnight Spend by State and Quarter (2019–2024)",
@@ -15,11 +30,7 @@
   "layer": [
     {
       "selection": {
-        "state_select": {
-          "type": "multi",
-          "fields": ["State"],
-          "bind": "legend"
-        }
+        "state_select": {"type": "multi", "fields": ["State"], "bind": "legend"}
       },
       "mark": "line",
       "encoding": {
@@ -51,10 +62,8 @@
       }
     },
     {
-      "mark": {"type": "rule", "color": "red", "strokeDash": [4,4]},
-      "encoding": {
-        "x": {"datum": "2020-Q2"}
-      }
+      "mark": {"type": "rule", "color": "red", "strokeDash": [4, 4]},
+      "encoding": {"x": {"datum": "2020-Q2"}}
     },
     {
       "mark": {
