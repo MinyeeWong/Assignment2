@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 500,
+  "title": "Domestic Overnight Spend by State and Quarter (2019–2024)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/data/domestic_trip_overnightspend.csv"
+  },
+  "transform": [
+    {
+      "calculate": "split(datum.Quarter, ' ')[2] + '-Q' + (indexof(datum.Quarter, 'March') == 0 ? '1' : indexof(datum.Quarter, 'June') == 0 ? '2' : indexof(datum.Quarter, 'September') == 0 ? '3' : '4')",
+      "as": "YearQuarter"
+    }
+  ],
+  "layer": [
+    {
+      "selection": {
+        "state_select": {
+          "type": "multi",
+          "fields": ["State"],
+          "bind": "legend"
+        }
+      },
+      "mark": "line",
+      "encoding": {
+        "x": {
+          "field": "YearQuarter",
+          "type": "ordinal",
+          "title": "Quarter",
+          "sort": "ascending",
+          "axis": {"labelAngle": -45}
+        },
+        "y": {
+          "field": "Spend ($M)",
+          "type": "quantitative",
+          "title": "Spend ($M)"
+        },
+        "color": {
+          "condition": {
+            "selection": "state_select",
+            "field": "State",
+            "type": "nominal"
+          },
+          "value": "lightgray"
+        },
+        "tooltip": [
+          {"field": "State", "type": "nominal"},
+          {"field": "Quarter", "type": "ordinal"},
+          {"field": "Spend ($M)", "type": "quantitative", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "rule", "color": "red", "strokeDash": [4,4]},
+      "encoding": {
+        "x": {"datum": "2020-Q2"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": -400,
+        "fontSize": 13,
+        "color": "red"
+      },
+      "encoding": {
+        "x": {"datum": "2020-Q2"},
+        "y": {"datum": 18000},
+        "text": {"value": "Lowest travel spend in June 2020"}
+      }
+    }
+  ]
+}
