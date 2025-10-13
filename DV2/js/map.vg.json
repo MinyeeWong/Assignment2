@@ -1,27 +1,31 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "config": {
-    "title": {
-      "fontSize": 24,        
-      "fontWeight": "bold"
-    },
-    "legend": {
-      "titleFontSize": 14,    
-      "labelFontSize": 12    
-    }
-  },
   "width": 800,
   "height": 600,
-  "title": "Domestic Overnight Trips in Australia (Trips per sq km, 2024)",
+  "title": {
+    "text": {"signal": "'Domestic Overnight Trips in Australia (' + Year_selection + ')'"}, 
+    "fontSize": 22
+  },
   "projection": {
     "type": "conicConformal",
     "parallels": [-18, -36],
     "rotate": [-135, 0]
   },
+  "params": [
+    {
+      "name": "Year_selection",
+      "value": 2024,
+      "bind": {
+        "input": "select",
+        "options": [2019, 2020, 2021, 2022, 2023, 2024],
+        "name": "Select Year: "
+      }
+    }
+  ],
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/js/output.json",
+        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/js/output.json",
         "format": {"type": "topojson", "feature": "STE_2021_AUST_GDA2020"}
       },
       "transform": [
@@ -29,14 +33,18 @@
           "lookup": "properties.STE_NAME21",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/data/tourism_trips_2024_by_state.csv"
+              "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/tourism_trips_by_state.csv"
             },
             "key": "state",
-            "fields": ["trips_2024_total"]
+            "fields": ["trips_2019","trips_2020","trips_2021","trips_2022","trip_2023","trips_2024"]
           }
         },
         {
-          "calculate": "datum.trips_2024_total / datum.properties.AREASQKM21",
+          "calculate": "Year_selection == 2019 ? datum.trips_2019 : Year_selection == 2020 ? datum.trips_2020 : Year_selection == 2021 ? datum.trips_2021 : Year_selection == 2022 ? datum.trips_2022 : Year_selection == 2023 ? datum.trip_2023 : datum.trips_2024",
+          "as": "trips_total"
+        },
+        {
+          "calculate": "datum.trips_total / datum.properties.AREASQKM21",
           "as": "trips_density"
         }
       ],
@@ -45,34 +53,65 @@
         "color": {
           "field": "trips_density",
           "type": "quantitative",
-          "title": "Trips per sq km (2024)"
+          "title": "Trips per sq km"
         },
         "tooltip": [
-          {
-            "field": "properties.STE_NAME21",
-            "type": "nominal",
-            "title": "State"
-          },
-          {
-            "field": "trips_2024_total",
-            "type": "quantitative",
-            "title": "Total Trips"
-          },
-          {
-            "field": "trips_density",
-            "type": "quantitative",
-            "title": "Trips per sq km",
-            "format": ".2f"
-          }
+          {"field": "properties.STE_NAME21", "type": "nominal", "title": "State"},
+          {"field": "trips_total", "type": "quantitative", "title": "Total Trips"},
+          {"field": "trips_density", "type": "quantitative", "title": "Trips per sq km", "format": ".2f"}
         ]
       }
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/js/output.json",
+        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/js/output.json",
         "format": {"type": "topojson", "feature": "ne_110m_graticules_10"}
       },
       "mark": {"type": "geoshape", "fill": null, "stroke": "lightgrey"}
+    },
+    {
+      "data": {
+        "values": [
+          {"state": "New South Wales", "lat": -33.5, "lon": 147},
+          {"state": "Victoria", "lat": -37, "lon": 144},
+          {"state": "Queensland", "lat": -23, "lon": 144},
+          {"state": "South Australia", "lat": -30, "lon": 135},
+          {"state": "Western Australia", "lat": -25, "lon": 122},
+          {"state": "Tasmania", "lat": -42, "lon": 147},
+          {"state": "Northern Territory", "lat": -19, "lon": 133},
+          {"state": "Australian Capital Territory", "lat": -35.3, "lon": 149.1}
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/tourism_trips_by_state.csv"
+            },
+            "key": "state",
+            "fields": ["trips_2019","trips_2020","trips_2021","trips_2022","trip_2023","trips_2024"]
+          }
+        },
+        {
+          "calculate": "Year_selection == 2019 ? datum.trips_2019 : Year_selection == 2020 ? datum.trips_2020 : Year_selection == 2021 ? datum.trips_2021 : Year_selection == 2022 ? datum.trips_2022 : Year_selection == 2023 ? datum.trip_2023 : datum.trips_2024",
+          "as": "trips_total"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "align": "center",
+        "baseline": "middle",
+        "dy": -5,
+        "fill": "black",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "trips_total", "type": "quantitative", "format": ","}
+      }
     }
   ]
 }

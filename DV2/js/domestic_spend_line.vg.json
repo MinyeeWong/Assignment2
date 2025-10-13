@@ -19,7 +19,7 @@
   "height": 500,
   "title": "Domestic Overnight Spend by State and Quarter (2019–2024)",
   "data": {
-    "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/data/domestic_trip_overnightspend.csv"
+    "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/domestic_trip_overnightspend.csv"
   },
   "transform": [
     {
