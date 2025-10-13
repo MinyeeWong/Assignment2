@@ -1,0 +1,131 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 600,
+  "title": {
+    "text": {"signal": "'International Visitors to Australian States (' + Year_selection + ')'"}, 
+    "fontSize": 20
+  },
+  "projection": {"type": "conicConformal", "parallels": [-18, -36], "rotate": [-135, 0]},
+  "params": [
+    {
+      "name": "Year_selection",
+      "value": 2019,
+      "bind": {
+        "input": "select",
+        "options": [2019, 2020, 2021, 2022, 2023, 2024],
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {"values": [{"dummy": 1}]},
+      "mark": {"type": "rect", "fill": "lightblue"},
+      "encoding": {
+        "x": {"value": 0},
+        "x2": {"value": 800},
+        "y": {"value": 0},
+        "y2": {"value": 600}
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/js/output.json",
+        "format": {"type": "topojson", "feature": "STE_2021_AUST_GDA2020"}
+      },
+      "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5, "fill": "#a6dba1"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/js/output.json",
+        "format": {"type": "topojson", "feature": "ne_110m_graticules_10"}
+      },
+      "mark": {"type": "geoshape", "fill": null, "stroke": "#888", "strokeWidth": 0.5}
+    },
+    {
+      "data": {
+        "values": [
+          {"state":"New South Wales","lat":-33.8688,"lon":151.2093},
+          {"state":"Victoria","lat":-37.8136,"lon":144.9631},
+          {"state":"Queensland","lat":-27.4698,"lon":153.0251},
+          {"state":"South Australia","lat":-34.9285,"lon":138.6007},
+          {"state":"Western Australia","lat":-31.9505,"lon":115.8605},
+          {"state":"Tasmania","lat":-42.8821,"lon":147.3272},
+          {"state":"Northern Territory","lat":-12.4634,"lon":130.8456},
+          {"state":"ACT","lat":-35.2809,"lon":149.1300}
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/international_visitor_data.csv"
+            },
+            "key": "State",
+            "fields": ["visitor_2019","visitor_2020","visitor_2021","visitor_2022","visitor_2023","visitor_2024"]
+          }
+        },
+        {
+          "calculate": "Year_selection == 2019 ? datum.visitor_2019 : Year_selection == 2020 ? datum.visitor_2020 : Year_selection == 2021 ? datum.visitor_2021 : Year_selection == 2022 ? datum.visitor_2022 : Year_selection == 2023 ? datum.visitor_2023 : datum.visitor_2024",
+          "as": "visitor_total"
+        }
+      ],
+      "mark": {"type": "circle", "color": "red", "opacity": 0.6},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {"field": "visitor_total", "type": "quantitative", "scale":{"range":[100,2000]}},
+        "tooltip": [
+          {"field": "state","type":"nominal","title":"State"},
+          {"field":"visitor_total","type":"quantitative","title":"Visitors","format":","}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"state":"New South Wales","lat":-33.8688,"lon":151.2093},
+          {"state":"Victoria","lat":-37.8136,"lon":144.9631},
+          {"state":"Queensland","lat":-27.4698,"lon":153.0251},
+          {"state":"South Australia","lat":-34.9285,"lon":138.6007},
+          {"state":"Western Australia","lat":-31.9505,"lon":115.8605},
+          {"state":"Tasmania","lat":-42.8821,"lon":147.3272},
+          {"state":"Northern Territory","lat":-12.4634,"lon":130.8456},
+          {"state":"ACT","lat":-35.2809,"lon":149.1300}
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/international_visitor_data.csv"
+            },
+            "key": "State",
+            "fields": ["visitor_2019","visitor_2020","visitor_2021","visitor_2022","visitor_2023","visitor_2024"]
+          }
+        },
+        {
+          "calculate": "Year_selection == 2019 ? datum.visitor_2019 : Year_selection == 2020 ? datum.visitor_2020 : Year_selection == 2021 ? datum.visitor_2021 : Year_selection == 2022 ? datum.visitor_2022 : Year_selection == 2023 ? datum.visitor_2023 : datum.visitor_2024",
+          "as": "visitor_total"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "align": "center",
+        "baseline": "middle",
+        "dy": -10,
+        "fill": "black",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "visitor_total", "type": "quantitative", "format": ","}
+      }
+    }
+  ]
+}
