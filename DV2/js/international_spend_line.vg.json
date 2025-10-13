@@ -15,9 +15,8 @@
       "labelFontSize": 12
     }
   },
-  "width": 450,
+  "width": 290,
   "height": 400,
-  "title": "International Visitor Spend by State (2019–2024)",
   "data": {
     "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/international_spending_data.csv"
   },

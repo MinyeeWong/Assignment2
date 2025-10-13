@@ -15,8 +15,7 @@
       "labelFontSize": 12
     }
   },
-  "title": "Top 5 Visitor Countries per Year",
-  "width": 800,
+  "width": 750,
   "height": 600,
   "data": {
     "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/Top5_visitor.csv"

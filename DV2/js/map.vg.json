@@ -17,11 +17,6 @@
       "labelFontSize": 12
     }
   },
-  "title": {
-    "text": {"signal": "'Domestic Overnight Trips in Australia (' + Year_selection + ')'"}, 
-    "fontSize": 24,
-    "fontWeight": "bold"
-  },
   "projection": {
     "type": "conicConformal",
     "parallels": [-18, -36],

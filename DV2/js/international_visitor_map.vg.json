@@ -17,11 +17,6 @@
       "labelFontSize": 12
     }
   },
-  "title": {
-    "text": {"signal": "'International Visitors to Australian States (' + Year_selection + ')'"}, 
-    "fontSize": 24,
-    "fontWeight": "bold"
-  },
   "projection": {"type": "conicConformal", "parallels": [-18, -36], "rotate": [-135, 0]},
   "params": [
     {

@@ -9,39 +9,79 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5; }
     header { text-align: center; padding: 20px; background-color: #004b8d; color: white; }
+    h1 { margin-bottom: 10px; }
     .container { display: flex; flex-direction: column; gap: 30px; padding: 30px; align-items: center; }
-    .vis { background-color: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); width: 100%; max-width: 1000px; }
+    .vis { background-color: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); width: 100%; max-width: 1000px; }
     .charts-row { display: flex; gap: 20px; width: 100%; }
-    .chart { flex: 1; min-width: 300px; height: 500px; }
+    .chart { flex: 1; min-width: 300px; height: 600px; }
+    h2 { margin-top: 0; margin-bottom: 10px; color: #004b8d; }
+    p { margin-top: 0; margin-bottom: 15px; line-height: 1.5; }
+    .intro {
+      max-width: 800px;
+      text-align: center;  /* center-align text */
+      margin: 0 auto 20px auto;  /* center the container and add bottom spacing */
+      font-size: 16px;
+    }
+    .chart-description h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .chart-description p {
+      margin: 5px 0 15px 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+
   </style>
 </head>
 <body>
   <header>
     <h1>Tourism in Australia (2019–2024)</h1>
+    <p class="intro">
+      This dashboard explores tourism trends in Australia from 2019 to 2024. 
+      You can see how domestic travel patterns evolved, where international visitors entered, 
+      how spending changed over time, and which countries contributed most visitors.
+    </p>
   </header>
 
   <div class="container">
-    <!-- Top maps -->
+    <!-- Domestic Trips Map -->
     <div class="vis">
+      <h2>Domestic Trips in Australia (2019-2024)</h2>
+      <p>This choropleth map shows where Australians travelled internally. Darker regions indicate higher travel volume.</p>
       <div id="domestic_map_vis" style="height: 500px;"></div>
     </div>
 
+    <!-- International Arrivals Map -->
     <div class="vis">
+      <h2>International Arrivals (2019-2024)</h2>
+      <p>This symbol map highlights the entry points of international visitors. Larger symbols represent more visitors arriving at that location.</p>
       <div id="international_map_vis" style="height: 500px;"></div>
     </div>
 
-    <!-- Line charts side by side -->
-    <div class="charts-row">
-      <div class="chart vis">
-        <div id="domestic_spend_line_vis"></div>
+    <!-- Domestic vs International Spending Section -->
+    <div class="vis" style="width: 100%;">
+      <!-- Section title and description -->
+      <div class="section-description" style="text-align: center; margin-bottom: 20px;">
+        <h2>Domestic vs International Spending</h2>
+        <p>This section shows how spending has changed over time for both domestic travellers and international visitors to Australia (2019–2024).</p>
       </div>
-      <div class="chart vis">
+
+      <!-- Both line charts in one row inside this container -->
+      <div class="charts-row">
+        <div id="domestic_spend_line_vis"></div>
         <div id="international_spend_line_vis"></div>
       </div>
     </div>
 
+
     <!-- Grouped bar chart for top 5 countries -->
     <div class="vis">
+      <h2>Top 5 Visitor Countries Per Year</h2>
+      <p>This grouped bar chart shows the top five countries contributing international visitors each year. Notice changes in dominant source countries over time.</p>
       <div id="top5_countries_bar_vis" style="height: 500px;"></div>
     </div>
   </div>
