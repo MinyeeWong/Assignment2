@@ -39,6 +39,11 @@
         <div id="international_spend_line_vis"></div>
       </div>
     </div>
+
+    <!-- Grouped bar chart for top 5 countries -->
+    <div class="vis">
+      <div id="top5_countries_bar_vis" style="height: 500px;"></div>
+    </div>
   </div>
 
   <script>
@@ -48,6 +53,8 @@
 
     vegaEmbed('#domestic_spend_line_vis', 'js/domestic_spend_line.vg.json', { actions: false }).catch(console.error);
     vegaEmbed('#international_spend_line_vis', 'js/international_spend_line.vg.json', { actions: false }).catch(console.error);
+
+    vegaEmbed('#top5_countries_bar_vis', 'js/top5_visitor_bar.vg.json', { actions: false }).catch(console.error);
   </script>
 </body>
 </html>
