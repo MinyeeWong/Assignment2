@@ -35,7 +35,8 @@
     "color": {
       "field": "Country",
       "type": "nominal",
-      "title": "Country"
+      "title": "Country",
+      "scale": {"scheme": "set2"}
     },
     "xOffset": {"field": "Country"},
     "tooltip": [

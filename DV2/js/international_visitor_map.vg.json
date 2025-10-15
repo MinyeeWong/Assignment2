@@ -21,7 +21,7 @@
   "params": [
     {
       "name": "Year_selection",
-      "value": 2019,
+      "value": 2024,
       "bind": {
         "input": "select",
         "options": [2019, 2020, 2021, 2022, 2023, 2024],
@@ -42,14 +42,14 @@
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/js/output.json",
+        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/js/output_faster.json",
         "format": {"type": "topojson", "feature": "STE_2021_AUST_GDA2020"}
       },
       "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5, "fill": "#a6dba1"}
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/js/output.json",
+        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/js/output_faster.json",
         "format": {"type": "topojson", "feature": "ne_110m_graticules_10"}
       },
       "mark": {"type": "geoshape", "fill": null, "stroke": "#888", "strokeWidth": 0.5}
@@ -57,7 +57,7 @@
     {
       "data": {
         "values": [
-          {"state":"New South Wales","lat":-33.8688,"lon":151.2093},
+          {"state":"New South Wales","lat":-31.8688,"lon":145.2093},
           {"state":"Victoria","lat":-37.8136,"lon":144.9631},
           {"state":"Queensland","lat":-27.4698,"lon":153.0251},
           {"state":"South Australia","lat":-34.9285,"lon":138.6007},
@@ -87,7 +87,15 @@
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude": {"field": "lat", "type": "quantitative"},
-        "size": {"field": "visitor_total", "type": "quantitative", "scale":{"range":[100,2000]}},
+        "size": {
+          "field": "visitor_total",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 4500000],
+            "range": [50, 8000],
+            "type": "sqrt"
+          }
+        },
         "tooltip": [
           {"field": "state","type":"nominal","title":"State"},
           {"field":"visitor_total","type":"quantitative","title":"Visitors","format":","}
@@ -97,7 +105,7 @@
     {
       "data": {
         "values": [
-          {"state":"New South Wales","lat":-33.8688,"lon":151.2093},
+          {"state":"New South Wales","lat":-31.8688,"lon":145.2093},
           {"state":"Victoria","lat":-37.8136,"lon":144.9631},
           {"state":"Queensland","lat":-27.4698,"lon":153.0251},
           {"state":"South Australia","lat":-34.9285,"lon":138.6007},
@@ -136,6 +144,34 @@
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude": {"field": "lat", "type": "quantitative"},
         "text": {"field": "visitor_total", "type": "quantitative", "format": ","}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"state":"New South Wales","lat":-33.5,"lon":147},
+          {"state":"Victoria","lat":-38,"lon":144},
+          {"state":"Queensland","lat":-23,"lon":144},
+          {"state":"South Australia","lat":-30,"lon":135},
+          {"state":"Western Australia","lat":-25,"lon":122},
+          {"state":"Tasmania","lat":-43,"lon":147},
+          {"state":"Northern Territory","lat":-19,"lon":133},
+          {"state":"ACT","lat":-37.3,"lon":149.1}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -18,
+        "fill": "black",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "state", "type": "nominal"}
       }
     }
   ]

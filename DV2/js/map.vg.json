@@ -36,7 +36,7 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/js/output.json",
+        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/js/output_faster.json",
         "format": {"type": "topojson", "feature": "STE_2021_AUST_GDA2020"}
       },
       "transform": [
@@ -64,7 +64,10 @@
         "color": {
           "field": "trips_density",
           "type": "quantitative",
-          "title": "Trips per sq km"
+          "title": "Trips per sq km", 
+          "scale": {
+            "domain": [0, 1020]
+          }
         },
         "tooltip": [
           {"field": "properties.STE_NAME21", "type": "nominal", "title": "State"},
@@ -75,7 +78,7 @@
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/js/output.json",
+        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/js/output_faster.json",
         "format": {"type": "topojson", "feature": "ne_110m_graticules_10"}
       },
       "mark": {"type": "geoshape", "fill": null, "stroke": "lightgrey"}

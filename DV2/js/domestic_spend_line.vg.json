@@ -75,6 +75,7 @@
         "dx": 5,
         "dy": -380,
         "fontSize": 13,
+        "font": "Arial",
         "color": "red"
       },
       "encoding": {
