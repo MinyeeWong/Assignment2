@@ -1,0 +1,73 @@
+﻿Year,Reason,Type,Value
+2019,     Holiday,Visitors,"4,008"
+2019,     Visiting friends and relatives,Visitors,"2,612"
+2019,     Business,Visitors,"1,013"
+2019,     Employment,Visitors,212
+2019,     Education,Visitors,594
+2019,     Other reason,Visitors,269
+2019,     Holiday,Spend,"17,240"
+2019,     Visiting friends and relatives,Spend,"7,575"
+2019,     Business,Spend,"4,057"
+2019,     Employment,Spend,"2,124"
+2019,     Education,Spend,"13,347"
+2019,     Other reason,Spend,"1,038"
+2020,     Holiday,Visitors,720
+2020,     Visiting friends and relatives,Visitors,514
+2020,     Business,Visitors,163
+2020,     Employment,Visitors,66
+2020,     Education,Visitors,175
+2020,     Other reason,Visitors,68
+2020,     Holiday,Spend,"3,482"
+2020,     Visiting friends and relatives,Spend,"1,920"
+2020,     Business,Spend,629
+2020,     Employment,Spend,633
+2020,     Education,Spend,"4,059"
+2020,     Other reason,Spend,317
+2021,     Holiday,Visitors,"18,793"
+2021,     Visiting friends and relatives,Visitors,"131,891"
+2021,     Business,Visitors,"22,762"
+2021,     Employment,Visitors,"22,715"
+2021,     Education,Visitors,"7,905"
+2021,     Other reason,Visitors,"20,070"
+2021,     Holiday,Spend,120
+2021,     Visiting friends and relatives,Spend,"1,251"
+2021,     Business,Spend,210
+2021,     Employment,Spend,383
+2021,     Education,Spend,217
+2021,     Other reason,Spend,245
+2022,     Holiday,Visitors,"941,299"
+2022,     Visiting friends and relatives,Visitors,"1,610,014"
+2022,     Business,Visitors,"408,530"
+2022,     Employment,Visitors,"136,901"
+2022,     Education,Visitors,"203,630"
+2022,     Other reason,Visitors,"114,775"
+2022,     Holiday,Spend,"4,622"
+2022,     Visiting friends and relatives,Spend,"6,180"
+2022,     Business,Spend,"2,255"
+2022,     Employment,Spend,"1,253"
+2022,     Education,Spend,"4,852"
+2022,     Other reason,Spend,596
+2023,     Holiday,Visitors,"2,582"
+2023,     Visiting friends and relatives,Visitors,"2,441"
+2023,     Business,Visitors,726
+2023,     Employment,Visitors,250
+2023,     Education,Visitors,422
+2023,     Other reason,Visitors,220
+2023,     Holiday,Spend,"14,199"
+2023,     Visiting friends and relatives,Spend,"9,416"
+2023,     Business,Spend,"4,089"
+2023,     Employment,Spend,"2,796"
+2023,     Education,Spend,"11,762"
+2023,     Other reason,Spend,"1,011"
+2024,     Holiday,Visitors,"3,239"
+2024,     Visiting friends and relatives,Visitors,"2,600"
+2024,     Business,Visitors,779
+2024,     Employment,Visitors,309
+2024,     Education,Visitors,486
+2024,     Other reason,Visitors,221
+2024,     Holiday,Spend,"17,899"
+2024,     Visiting friends and relatives,Spend,"9,659"
+2024,     Business,Spend,"3,816"
+2024,     Employment,Spend,"4,014"
+2024,     Education,Spend,"12,751"
+2024,     Other reason,Spend,734
