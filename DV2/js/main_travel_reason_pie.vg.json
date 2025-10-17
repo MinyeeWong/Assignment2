@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "title": {
+      "fontSize": 24,
+      "fontWeight": "bold"
+    },
+    "legend": {
+      "titleFontSize": 14,
+      "labelFontSize": 12
+    },
+    "axis": {
+      "titleFontSize": 14,
+      "titleFontWeight": "bold",
+      "labelFontSize": 12
+    }
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/main_reason_trips_spending.csv"
+  },
+  "params": [
+    {
+      "name": "selectedYear",
+      "value": 2019,
+      "bind": {
+        "input": "select",
+        "options": [2019, 2020, 2021, 2022, 2023, 2024],
+        "labels": ["2019", "2020", "2021", "2022", "2023", "2024"],
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Year == selectedYear"},
+    {
+      "joinaggregate": [{"op": "sum", "field": "Value", "as": "TotalValue"}],
+      "groupby": ["Type"]
+    },
+    {
+      "calculate": "format(datum.Value / datum.TotalValue, '.1%')",
+      "as": "Percentage"
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "Type",
+      "type": "nominal",
+      "title": "",
+      "header": {
+        "titleFontSize": 18,
+        "labelFontSize": 16,
+        "labelFontWeight": "bold",
+        "labelPadding": 10
+      }
+    }
+  },
+  "spec": {
+    "width": 300,
+    "height": 300,
+    "mark": {"type": "arc", "tooltip": true},
+    "selection": {
+      "legendSelection": {"type": "point", "fields": ["Reason"], "bind": "legend"}
+    },
+    "encoding": {
+      "theta": {"field": "Value", "type": "quantitative"},
+      "color": {"field": "Reason", "type": "nominal", "title": "Reason for Travel"},
+      "opacity": {
+        "condition": {"selection": "legendSelection", "value": 1},
+        "value": 0.2
+      },
+      "tooltip": [
+        {"field": "Reason", "type": "nominal"},
+        {"field": "Value", "type": "quantitative", "format": ","},
+        {"field": "Percentage", "type": "nominal", "title": "Share"}
+      ]
+    }
+  }
+}

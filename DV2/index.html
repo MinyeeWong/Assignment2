@@ -18,23 +18,12 @@
     p { margin-top: 0; margin-bottom: 15px; line-height: 1.5; }
     .intro {
       max-width: 800px;
-      text-align: center;  /* center-align text */
-      margin: 0 auto 20px auto;  /* center the container and add bottom spacing */
+      text-align: center;
+      margin: 0 auto 20px auto;
       font-size: 18px;
     }
-    .chart-description h2 {
-      margin: 0;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .chart-description p {
-      margin: 5px 0 15px 0;
-      font-size: 14px;
-      color: #333;
-    }
-
-
+    .chart-description h2 { margin: 0; font-size: 20px; font-weight: bold; }
+    .chart-description p { margin: 5px 0 15px 0; font-size: 14px; color: #333; }
   </style>
 </head>
 <body>
@@ -65,25 +54,28 @@
 
     <!-- Domestic vs International Spending Section -->
     <div class="vis" style="width: 100%;">
-      <!-- Section title and description -->
       <div class="section-description" style="text-align: center; margin-bottom: 20px;">
         <h2>Domestic vs International Spending</h2>
         <p>This section shows how spending has changed over time for<br> both domestic travellers and international visitors to Australia (2019–2024).</p>
       </div>
-
-      <!-- Both line charts in one row inside this container -->
       <div class="charts-row">
         <div id="domestic_spend_line_vis"></div>
         <div id="international_spend_line_vis"></div>
       </div>
     </div>
 
-
     <!-- Grouped bar chart for top 5 countries -->
     <div class="vis" style="text-align: center;">
       <h2>Top 5 Visitor Countries Per Year</h2>
       <p>This grouped bar chart shows the top five countries contributing<br> international visitors each year. Notice changes in dominant source countries over time.</p>
       <div id="top5_countries_bar_vis" style="height: 500px;"></div>
+    </div>
+
+    <!-- Pie charts for Trips vs Spending by Reason for Travel -->
+    <div class="vis" style="text-align: center;">
+      <h2>Trips vs Spending by Reason for Travel</h2>
+      <p>Compare the proportion of trips and spending by travel purpose for a selected year. Hover on the slices to see percentage shares.</p>
+      <div id="reason_trips_spending_pie_vis" style="height: 350px;"></div>
     </div>
   </div>
 
@@ -96,6 +88,8 @@
     vegaEmbed('#international_spend_line_vis', 'js/international_spend_line.vg.json', { actions: false }).catch(console.error);
 
     vegaEmbed('#top5_countries_bar_vis', 'js/top5_visitor_bar.vg.json', { actions: false }).catch(console.error);
+
+    vegaEmbed('#reason_trips_spending_pie_vis', 'js/main_travel_reason_pie.vg.json', { actions: false }).catch(console.error);
   </script>
 </body>
 </html>
