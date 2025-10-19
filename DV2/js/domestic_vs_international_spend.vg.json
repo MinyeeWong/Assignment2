@@ -1,0 +1,114 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "title": {"fontSize": 24, "fontWeight": "bold"},
+    "legend": {"titleFontSize": 14, "labelFontSize": 12},
+    "axis": {"titleFontSize": 14, "titleFontWeight": "bold", "labelFontSize": 12}
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/internation_vs_domestic_spending.csv"
+  },
+  "hconcat": [
+    {
+      "title": "Domestic",
+      "transform": [
+        {"filter": "datum.Type == 'Domestic'"}
+      ],
+      "width": 350,
+      "height": 400,
+      "layer": [
+        {
+          "selection": {
+            "state_select": {"type": "multi", "fields": ["State"], "bind": "legend"}
+          },
+          "mark": "line",
+          "encoding": {
+            "x": {"field": "Year", "type": "ordinal", "title": "Year"},
+            "y": {"field": "Spend ($M)", "type": "quantitative", "title": "Spend ($M)"},
+            "color": {
+              "condition": {"selection": "state_select", "field": "State", "type": "nominal"},
+              "value": "lightgray"
+            },
+            "tooltip": [
+              {"field": "State", "type": "nominal"},
+              {"field": "Year", "type": "ordinal"},
+              {"field": "Spend ($M)", "type": "quantitative", "format": ","}
+            ]
+          }
+        },
+        {
+          "mark": {"type": "rule", "color": "red", "strokeDash": [4, 4]},
+          "encoding": {"x": {"datum": "2020"}}
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 5,
+            "dy": -160,
+            "fontSize": 13,
+            "font": "Arial",
+            "color": "red"
+          },
+          "encoding": {
+            "x": {"datum": "2020"},
+            "y": {"datum": 18000},
+            "text": {"value": "Lowest domestic spend in 2020"}
+          }
+        }
+      ]
+    },
+    {
+      "title": "International",
+      "transform": [
+        {"filter": "datum.Type == 'International'"}
+      ],
+      "width": 350,
+      "height": 400,
+      "layer": [
+        {
+          "selection": {
+            "state_select_int": {"type": "multi", "fields": ["State"], "bind": "legend"}
+          },
+          "mark": "line",
+          "encoding": {
+            "x": {"field": "Year", "type": "ordinal", "title": "Year"},
+            "y": {"field": "Spend ($M)", "type": "quantitative", "title": "Spend ($M)"},
+            "color": {
+              "condition": {"selection": "state_select_int", "field": "State", "type": "nominal"},
+              "value": "lightgray"
+            },
+            "tooltip": [
+              {"field": "State", "type": "nominal"},
+              {"field": "Year", "type": "ordinal"},
+              {"field": "Spend ($M)", "type": "quantitative", "format": ","}
+            ]
+          }
+        },
+        {
+          "mark": {"type": "rule", "color": "red", "strokeDash": [4, 4]},
+          "encoding": {"x": {"datum": "2021"}}
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 5,
+            "dy": -200,
+            "fontSize": 13,
+            "font": "Arial",
+            "color": "red"
+          },
+          "encoding": {
+            "x": {"datum": "2021"},
+            "y": {"datum": 6000},
+            "text": {"value": "Lowest international spend in 2020"}
+          }
+        }
+      ]
+    }
+  ],
+  "resolve": {
+    "scale": {"y": "shared"}
+  }
+}
