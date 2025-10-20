@@ -22,18 +22,21 @@
       margin: 0 auto 20px auto;
       font-size: 18px;
     }
-    .chart-description h2 { margin: 0; font-size: 20px; font-weight: bold; }
-    .chart-description p { margin: 5px 0 15px 0; font-size: 14px; color: #333; }
+    .story-text {
+      font-size: 15px;
+      color: #333;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Tourism in Australia (2019–2024)</h1>
     <p class="intro">
-      This dashboard explores tourism trends in Australia from 2019 to 2024.<br> 
-      You can see how domestic travel patterns evolved, where international<br>  
-      visitors entered, how spending changed over time, and which countries<br> 
-      contributed most visitors.
+      Explore how Australians travelled domestically and how international visitors spent their time and money across the country. 
+      This dashboard highlights key trends, surprising shifts, and interesting patterns in Australian tourism.
     </p>
   </header>
 
@@ -41,14 +44,18 @@
     <!-- Domestic Trips Map -->
     <div class="vis" style="text-align: center;">
       <h2>Domestic Trips in Australia (2019-2024)</h2>
-      <p>This choropleth map shows where Australians travelled internally. Darker regions<br>indicate higher travel volume.</p>
+      <p class="story-text">
+        Australians are increasingly exploring their own backyard. Notice how popular destinations like New South Wales and Queensland consistently attract the highest number of trips. The darker the region, the more travel it receives. Can you spot the shifts in domestic travel patterns over the years, especially after 2020?
+      </p>
       <div id="domestic_map_vis" style="height: 500px;"></div>
     </div>
 
     <!-- International Arrivals Map -->
     <div class="vis" style="text-align: center;">
       <h2>International Arrivals (2019-2024)</h2>
-      <p>This symbol map highlights the entry points of international visitors.<br>Larger symbols represent more visitors arriving at that location.</p>
+      <p class="story-text">
+        International tourism saw dramatic changes in recent years. Observe where visitors enter the country and which locations are most popular. The size of the symbols indicates the number of arrivals. Look carefully at the dip in 2021, can you see how global events affected arrivals?
+      </p>
       <div id="international_map_vis" style="height: 500px;"></div>
     </div>
 
@@ -56,7 +63,9 @@
     <div class="vis" style="width: 100%;">
       <div class="section-description" style="text-align: center; margin-bottom: 20px;">
         <h2>Domestic vs International Spending</h2>
-        <p>This section shows how spending has changed over time for<br>both domestic travellers and international visitors to Australia (2019–2024).</p>
+        <p class="story-text">
+          Tracking spending helps us understand the economic impact of tourism. Domestic travellers usually spend more consistently across states, with a noticeable dip in 2020, likely due to COVID-19 travel restrictions. International visitor spending, however, shows a sharper decline in 2021, reflecting stricter border closures and travel limitations. Both domestic and international tourism show strong recovery in the subsequent years. Click on the legend to highlight individual states and explore trends over time.
+        </p>
       </div>
       <div id="spending_comparison_line_vis" style="height: 500px;"></div>
     </div>
@@ -64,14 +73,18 @@
     <!-- Grouped bar chart for top 5 countries -->
     <div class="vis" style="text-align: center;">
       <h2>Top 5 Visitor Countries Per Year</h2>
-      <p>This grouped bar chart shows the top five countries contributing<br>international visitors each year. Notice changes in dominant source countries over time.</p>
+      <p class="story-text">
+        Australia’s international visitors come from a variety of countries, but some dominate the market each year. Observe which countries consistently contribute the most visitors and how this changes over time. Can you spot emerging markets or countries that rebounded quickly after 2021?
+      </p>
       <div id="top5_countries_bar_vis" style="height: 500px;"></div>
     </div>
 
     <!-- Pie charts for Trips vs Spending by Reason for Travel -->
     <div class="vis" style="text-align: center;">
       <h2>Trips vs Spending by Reason for Travel</h2>
-      <p>Compare the proportion of trips and spending by travel purpose<br>for a selected year. Hover on the slices to see percentage shares.</p>
+      <p class="story-text">
+        Not all travel is created equal. Compare trips versus spending by travel purpose. Are leisure trips driving the majority of spending, or are business travellers contributing more? Hover over the slices to discover the share of each reason and explore changes across the years.
+      </p>
       <div id="reason_trips_spending_pie_vis" style="height: 350px;"></div>
     </div>
   </div>

@@ -26,11 +26,7 @@
     {
       "name": "Year_selection",
       "value": 2024,
-      "bind": {
-        "input": "select",
-        "options": [2019, 2020, 2021, 2022, 2023, 2024],
-        "name": "Select Year: "
-      }
+      "bind": {"input": "range", "min": 2019, "max": 2024, "step": 1, "name": "Select Year: "}
     }
   ],
   "layer": [
@@ -53,26 +49,21 @@
         {
           "calculate": "Year_selection == 2019 ? datum.trips_2019 : Year_selection == 2020 ? datum.trips_2020 : Year_selection == 2021 ? datum.trips_2021 : Year_selection == 2022 ? datum.trips_2022 : Year_selection == 2023 ? datum.trip_2023 : datum.trips_2024",
           "as": "trips_total"
-        },
-        {
-          "calculate": "datum.trips_total / datum.properties.AREASQKM21",
-          "as": "trips_density"
         }
       ],
       "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5},
       "encoding": {
         "color": {
-          "field": "trips_density",
+          "field": "trips_total",
           "type": "quantitative",
-          "title": "Trips per sq km", 
+          "title": "Total Trips",
           "scale": {
-            "domain": [0, 1020]
-          }
+            "domain": [600000, 40000000],
+            "range": ["#e0f3f8", "#005b96"]}
         },
         "tooltip": [
           {"field": "properties.STE_NAME21", "type": "nominal", "title": "State"},
-          {"field": "trips_total", "type": "quantitative", "title": "Total Trips"},
-          {"field": "trips_density", "type": "quantitative", "title": "Trips per sq km", "format": ".2f"}
+          {"field": "trips_total", "type": "quantitative", "title": "Total Trips", "format": ","}
         ]
       }
     },

@@ -1,48 +1,34 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "config": {
-    "title": {
-      "fontSize": 24,
-      "fontWeight": "bold"
-    },
-    "legend": {
-      "titleFontSize": 14,
-      "labelFontSize": 12
-    },
-    "axis": {
-      "titleFontSize": 14,
-      "titleFontWeight": "bold",
-      "labelFontSize": 12
-    }
+    "title": { "fontSize": 24, "fontWeight": "bold" },
+    "legend": { "titleFontSize": 14, "labelFontSize": 12 },
+    "axis": { "titleFontSize": 14, "titleFontWeight": "bold", "labelFontSize": 12 }
   },
   "width": 750,
   "height": 600,
-  "data": {
-    "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/Top5_visitor.csv"
+  "data": { "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/Top5_visitor.csv" },
+  "selection": {
+    "country_select": {
+      "type": "multi",
+      "fields": ["Country"],
+      "bind": "legend"
+    }
   },
   "mark": "bar",
   "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "ordinal",
-      "title": "Year"
+    "x": { "field": "Year", "type": "ordinal", "title": "Year" },
+    "y": { "field": "Visitors", "type": "quantitative", "title": "Number of Visitors" },
+    "color": { "field": "Country", "type": "nominal", "title": "Country", "scale": {"scheme": "set2"} },
+    "opacity": {
+      "condition": { "selection": "country_select", "value": 1 },
+      "value": 0.2
     },
-    "y": {
-      "field": "Visitors",
-      "type": "quantitative",
-      "title": "Number of Visitors"
-    },
-    "color": {
-      "field": "Country",
-      "type": "nominal",
-      "title": "Country",
-      "scale": {"scheme": "set2"}
-    },
-    "xOffset": {"field": "Country"},
+    "xOffset": { "field": "Country" },
     "tooltip": [
-      {"field": "Country", "type": "nominal"},
-      {"field": "Year", "type": "ordinal"},
-      {"field": "Visitors", "type": "quantitative", "format": ","}
+      { "field": "Country", "type": "nominal" },
+      { "field": "Year", "type": "ordinal" },
+      { "field": "Visitors", "type": "quantitative", "format": "," }
     ]
   }
 }
