@@ -97,6 +97,15 @@
       <div id="heatmap_trips_spending_vis" style="height: 400px;"></div>
     </div>
 
+    <!-- Rose Chart: Accommodation Types (2019 vs 2024) -->
+    <div class="vis" style="text-align: center;">
+      <h2>Accommodation Types: 2019 vs 2024</h2>
+      <p class="story-text">
+        This rose chart compares the number of stays in different accommodation types before and after the pandemic. Larger petals indicate higher stays, and the colors differentiate 2019 and 2024. Hover over each slice to see exact numbers.
+      </p>
+      <div id="rose_accommodation_vis" style="height: 400px;"></div>
+    </div>
+
   </div>
 
   <script>
@@ -110,6 +119,7 @@
 
     vegaEmbed('#reason_trips_spending_pie_vis', 'js/main_travel_reason_pie.vg.json', { actions: false }).catch(console.error);
     vegaEmbed('#heatmap_trips_spending_vis', 'js/heatmap.vg.json', { actions: false }).catch(console.error);
+    vegaEmbed('#rose_accommodation_vis', 'js/rose_chart.vg.json', { actions: false }).catch(console.error);
   </script>
 </body>
 </html>
