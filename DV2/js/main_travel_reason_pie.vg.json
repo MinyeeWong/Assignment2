@@ -23,9 +23,10 @@
       "name": "selectedYear",
       "value": 2024,
       "bind": {
-        "input": "select",
-        "options": [2019, 2020, 2021, 2022, 2023, 2024],
-        "labels": ["2019", "2020", "2021", "2022", "2023", "2024"],
+        "input": "range",
+        "min": 2019,
+        "max": 2024,
+        "step": 1,
         "name": "Select Year: "
       }
     }
@@ -55,7 +56,7 @@
     }
   },
   "spec": {
-    "width": 300,
+    "width": 350,
     "height": 300,
     "mark": {"type": "arc", "tooltip": true},
     "selection": {
@@ -63,7 +64,7 @@
     },
     "encoding": {
       "theta": {"field": "Value", "type": "quantitative"},
-      "color": {"field": "Reason", "type": "nominal", "title": "Reason for Travel"},
+      "color": {"field": "Reason", "type": "nominal", "title": "Reason for Travel", "scale": { "scheme": "set2" } },
       "opacity": {
         "condition": {"selection": "legendSelection", "value": 1},
         "value": 0.2

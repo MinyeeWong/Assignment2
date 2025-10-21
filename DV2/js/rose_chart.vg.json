@@ -1,53 +1,50 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "config": {
-    "title": {
-      "fontSize": 24,
-      "fontWeight": "bold"
-    },
-    "legend": {
-      "titleFontSize": 14,
-      "labelFontSize": 12
-    },
-    "axis": {
-      "titleFontSize": 14,
-      "titleFontWeight": "bold",
-      "labelFontSize": 12
-    }
-  },
   "data": {
     "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/type_of_accomodation.csv",
     "format": {"type": "csv"}
   },
   "transform": [
+    {"fold": ["year ending 2019", "year ending 2024"], "as": ["Year", "Stays"]},
+    {"calculate": "datum.Year == 'year ending 2019' ? 2019 : 2024", "as": "Year"},
+    {"filter": "datum.Type != null && datum.Type != ''"}
+  ],
+  "layer": [
     {
-      "fold": ["year ending 2019", "year ending 2024"],
-      "as": ["Year", "Stays"]
+      "mark": {"type": "arc", "tooltip": true},
+      "encoding": {
+        "theta": {"field": "Type", "type": "nominal"},
+        "radius": {
+          "field": "Stays",
+          "type": "quantitative",
+          "scale": {"type": "log", "base": 10, "zero": false, "domainMin": 1}
+        },
+        "color": {"field": "Year", "type": "ordinal", "scale": {"scheme": "set2"}},
+        "tooltip": [
+          {"field": "Type", "type": "nominal"},
+          {"field": "Year", "type": "ordinal"},
+          {"field": "Stays", "type": "quantitative"}
+        ]
+      }
     },
     {
-      "calculate": "datum.Year == 'year ending 2019' ? 2019 : 2024",
-      "as": "Year"
+      "mark": {"type": "text", "fontSize": 12, "dx": 30, "dy": 10},
+      "encoding": {
+        "theta": {"value": 1.0},
+        "radius": {"value": 150},
+        "text": {"value": "Adventure stays decreased post-pandemic"}
+      }
     },
     {
-      "filter": "datum.Type != null && datum.Type != ''"
+      "mark": {"type": "text", "fontSize": 12, "dx": -50, "dy": -30},
+      "encoding": {
+        "theta": {"value": 4.5},
+        "radius": {"value": 100},
+        "text": {"value": "Hotels/resorts – strong increase"}
+      }
     }
   ],
-  "mark": {"type": "arc", "tooltip": true},
-  "encoding": {
-    "theta": {"field": "Type", "type": "nominal"},
-    "radius": {
-      "field": "Stays",
-      "type": "quantitative",
-      "scale": {"type": "log", "base": 10, "zero": false, "domainMin": 1}
-    },
-    "color": {"field": "Year", "type": "ordinal", "scale": {"scheme": "set2"}},
-    "tooltip": [
-      {"field": "Type", "type": "nominal"},
-      {"field": "Year", "type": "ordinal"},
-      {"field": "Stays", "type": "quantitative"}
-    ]
-  },
   "view": {"stroke": null},
-  "width": 400,
+  "width": 500,
   "height": 400
 }

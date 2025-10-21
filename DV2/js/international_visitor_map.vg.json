@@ -88,7 +88,7 @@
           "type": "quantitative",
           "scale": {
             "domain": [0, 4500000],
-            "range": [50, 8000],
+            "range": [30, 12000],
             "type": "sqrt"
           }
         },
