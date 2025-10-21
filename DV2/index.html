@@ -87,6 +87,16 @@
       </p>
       <div id="reason_trips_spending_pie_vis" style="height: 350px;"></div>
     </div>
+
+    <!-- Heatmap: Trips vs Spend by Reason for Travel -->
+    <div class="vis" style="text-align: center;">
+      <h2>Heatmap: Trips vs Spending by Reason for Travel</h2>
+      <p class="story-text">
+        This heatmap lets you quickly compare travel reasons over the years. Use the dropdown to switch between Visitors and Spending. Darker shades of blue indicate higher values. Hover over a cell to see the exact number.
+      </p>
+      <div id="heatmap_trips_spending_vis" style="height: 400px;"></div>
+    </div>
+
   </div>
 
   <script>
@@ -99,6 +109,7 @@
     vegaEmbed('#top5_countries_bar_vis', 'js/top5_visitor_bar.vg.json', { actions: false }).catch(console.error);
 
     vegaEmbed('#reason_trips_spending_pie_vis', 'js/main_travel_reason_pie.vg.json', { actions: false }).catch(console.error);
+    vegaEmbed('#heatmap_trips_spending_vis', 'js/heatmap.vg.json', { actions: false }).catch(console.error);
   </script>
 </body>
 </html>
