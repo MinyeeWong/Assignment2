@@ -3,18 +3,38 @@
   "width": 650, 
   "height": 400,
   "config": {
+    "font": "Roboto, 'Open Sans'",
     "title": {
+      "font": "Roboto, 'Open Sans'",
       "fontSize": 24,
-      "fontWeight": "bold"
+      "fontWeight": "bold",
+      "anchor": "start",
+      "color": "#333"
     },
     "legend": {
+      "titleFont": "Roboto, 'Open Sans'",
+      "labelFont": "Roboto, 'Open Sans'",
       "titleFontSize": 14,
       "labelFontSize": 12
     },
     "axis": {
+      "titleFont": "Roboto, 'Open Sans'",
+      "labelFont": "Roboto, 'Open Sans'",
       "titleFontSize": 14,
       "titleFontWeight": "bold",
       "labelFontSize": 12
+    },
+    "header": {
+      "titleFont": "Roboto, 'Open Sans'",
+      "labelFont": "Roboto, 'Open Sans'"
+    },
+    "text": {
+      "font": "Roboto, 'Open Sans'",
+      "fontSize": 12,
+      "color": "#333"
+    },
+    "mark": {
+      "font": "Roboto, 'Open Sans'"
     }
   },
   "data": {
