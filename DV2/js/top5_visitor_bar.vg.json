@@ -1,34 +1,102 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "config": {
-    "title": { "fontSize": 24, "fontWeight": "bold" },
-    "legend": { "titleFontSize": 14, "labelFontSize": 12 },
-    "axis": { "titleFontSize": 14, "titleFontWeight": "bold", "labelFontSize": 12 }
-  },
-  "width": 750,
-  "height": 600,
-  "data": { "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/Top5_visitor.csv" },
-  "selection": {
-    "country_select": {
-      "type": "multi",
-      "fields": ["Country"],
-      "bind": "legend"
+    "title": {
+      "fontSize": 24,
+      "fontWeight": "bold"
+    },
+    "legend": {
+      "titleFontSize": 14,
+      "labelFontSize": 12
+    },
+    "axis": {
+      "titleFontSize": 14,
+      "titleFontWeight": "bold",
+      "labelFontSize": 12
     }
   },
-  "mark": "bar",
-  "encoding": {
-    "x": { "field": "Year", "type": "ordinal", "title": "Year" },
-    "y": { "field": "Visitors", "type": "quantitative", "title": "Number of Visitors" },
-    "color": { "field": "Country", "type": "nominal", "title": "Country", "scale": {"scheme": "set2"} },
-    "opacity": {
-      "condition": { "selection": "country_select", "value": 1 },
-      "value": 0.2
+  "width": 750, 
+  "height": 600,
+  "layer": [
+    {
+      "data": { "values": [{}] },
+      "mark": { "type": "rect", "color": "#004b8d", "opacity": 0.12 },
+      "encoding": {
+        "x": { "value": 240 },
+        "x2": { "value": 390 }, 
+        "y": { "value": 0 },
+        "y2": { "value": 600 } 
+      }
     },
-    "xOffset": { "field": "Country" },
-    "tooltip": [
-      { "field": "Country", "type": "nominal" },
-      { "field": "Year", "type": "ordinal" },
-      { "field": "Visitors", "type": "quantitative", "format": "," }
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/Top5_visitor.csv"
+      },
+      "selection": {
+        "country_select": { "type": "multi", "fields": ["Country"], "bind": "legend" }
+      },
+      "mark": "bar",
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal", "title": "Year", "scale": { "paddingInner": 0.3, "paddingOuter": 0.2 } },
+        "y": { "field": "Visitors", "type": "quantitative", "title": "Number of Visitors" },
+        "color": { "field": "Country", "type": "nominal", "scale": { "scheme": "set2" } },
+        "opacity": { "condition": { "selection": "country_select", "value": 1 }, "value": 0.2 },
+        "xOffset": { "field": "Country" },
+        "tooltip": [
+          { "field": "Country", "type": "nominal" },
+          { "field": "Year", "type": "nominal" },
+          { "field": "Visitors", "type": "quantitative", "format": "," }
+        ]
+      }
+    },
+    {
+  "layer": [
+    {
+      "data": { "values": [{ "Year": "2021", "Visitors": 800000 }] },
+      "mark": { "type": "text", "align": "center", "dy": -18, "fontSize": 14, "fontWeight": "bold", "color": "#004b8d" },
+      "encoding": {
+        "x": { "field": "Year", "type": "nominal" },
+        "y": { "field": "Visitors", "type": "quantitative" },
+        "text": { "value": "Sharp decline in 2021" }
+      }
+    },
+    {
+      "data": { "values": [{ "Year": "2021", "Visitors": 800000 }] },
+      "mark": { "type": "text", "align": "center", "dy": 0, "fontSize": 14, "fontWeight": "bold", "color": "#004b8d" },
+      "encoding": {
+        "x": { "field": "Year", "type": "nominal" },
+        "y": { "field": "Visitors", "type": "quantitative" },
+        "text": { "value": "due to pandemic" }
+      }
+    }
+  ]
+}
+, {
+  "data": {
+    "values": [
+      {
+        "Year": "2022",
+        "Visitors": 1450000, 
+        "note": "New Zealand shows fastest recovery"
+      }
     ]
+  },
+  "mark": {
+    "type": "text",
+    "align": "left",
+    "baseline": "middle",
+    "dx": 10, 
+    "dy": 0,
+    "fontSize": 14,
+    "fontWeight": "bold",
+    "color": "#006400"
+  },
+  "encoding": {
+    "x": { "field": "Year", "type": "nominal" },
+    "y": { "field": "Visitors", "type": "quantitative" },
+    "text": { "field": "note" }
   }
+}
+
+  ]
 }

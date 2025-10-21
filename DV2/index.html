@@ -88,23 +88,58 @@
       <div id="reason_trips_spending_pie_vis" style="height: 350px;"></div>
     </div>
 
+    <!-- Bubble Matrix: Reason vs Visitors/Spend -->
+    <div class="vis" style="text-align: center;">
+      <h2>Bubble Matrix: Trips vs Spending by Reason</h2>
+      <p class="story-text">
+        Explore the number of trips or spending by travel reason. Use the dropdown in the chart to switch between Visitors and Spend. The size of the paper-plane indicates the magnitude, and the color shade helps highlight higher values. Hover over the planes to see exact numbers.
+      </p>
+      <div id="bubble_matrix_vis" style="height: 400px;"></div>
+    </div>
+
     <!-- Heatmap: Trips vs Spend by Reason for Travel -->
     <div class="vis" style="text-align: center;">
       <h2>Heatmap: Trips vs Spending by Reason for Travel</h2>
       <p class="story-text">
         This heatmap lets you quickly compare travel reasons over the years. Use the dropdown to switch between Visitors and Spending. Darker shades of blue indicate higher values. Hover over a cell to see the exact number.
       </p>
-      <div id="heatmap_trips_spending_vis" style="height: 400px;"></div>
+      <div id="heatmap_trips_spending_vis" style="height: 300px;"></div>
     </div>
 
     <!-- Rose Chart: Accommodation Types (2019 vs 2024) -->
     <div class="vis" style="text-align: center;">
       <h2>Accommodation Types: 2019 vs 2024</h2>
       <p class="story-text">
-        This rose chart compares the number of stays in different accommodation types before and after the pandemic. Larger petals indicate higher stays, and the colors differentiate 2019 and 2024. Hover over each slice to see exact numbers.
+        This rose chart compares the number of stays in different accommodation types before and after the pandemic.
+        Larger petals indicate higher stays, and the colors differentiate 2019 and 2024. Hover over each slice to see exact numbers.
       </p>
-      <div id="rose_accommodation_vis" style="height: 400px;"></div>
+
+      <!-- Chart + Insight side-by-side -->
+      <div style="display: flex; align-items: flex-start; justify-content: center; gap: 40px; flex-wrap: wrap;">
+        <!-- Rose chart container -->
+        <div id="rose_accommodation_vis" style="width: 60%; min-width: 320px; height: 400px;"></div>
+
+        <!-- Insight card -->
+        <div style="width: 35%; min-width: 260px; text-align: left;">
+          <div style="background: #f8fbff; border-radius: 8px; padding: 16px; box-shadow: 0 1px 6px rgba(0,0,0,0.06);">
+            <h3 style="color: #004b8d; margin-top: 0; margin-bottom: 8px;">Key Insights</h3>
+            <p class="story-text" style="margin-bottom: 8px;">
+              • The largest growth occurred in <strong>hotels, resorts, and motels</strong>, increasing from <strong>28,840</strong> (2019) to <strong>44,378</strong> (2024), suggesting a shift toward more comfortable and premium lodging options.
+            </p>
+            <p class="story-text" style="margin-bottom: 8px;">
+              • <strong>Friends or relatives’ properties</strong> remained very popular, rising from <strong>81,675</strong> to <strong>93,219</strong>.
+            </p>
+            <p class="story-text" style="margin-bottom: 8px;">
+              • <strong>Backpackers, caravans, and non-commercial camping</strong> declined, indicating less budget/adventure-style travel.
+            </p>
+            <p class="story-text" style="margin-bottom: 0;">
+              • <strong>Rented houses/apartments</strong> maintained the highest usage overall (111,232 → 113,664), showing steady demand for home-like stays.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+
 
   </div>
 
@@ -112,13 +147,16 @@
     // Embed the visualisations
     vegaEmbed('#domestic_map_vis', 'js/map.vg.json', { actions: false }).catch(console.error);
     vegaEmbed('#international_map_vis', 'js/international_visitor_map.vg.json', { actions: false }).catch(console.error);
-
     vegaEmbed('#spending_comparison_line_vis', 'js/domestic_vs_international_spend.vg.json', { actions: false }).catch(console.error);
-
     vegaEmbed('#top5_countries_bar_vis', 'js/top5_visitor_bar.vg.json', { actions: false }).catch(console.error);
-
     vegaEmbed('#reason_trips_spending_pie_vis', 'js/main_travel_reason_pie.vg.json', { actions: false }).catch(console.error);
+
+    // New Bubble Matrix chart
+    vegaEmbed('#bubble_matrix_vis', 'js/bubble_matrix.vg.json', { actions: false }).catch(console.error);
+
+    // Updated Heatmap chart
     vegaEmbed('#heatmap_trips_spending_vis', 'js/heatmap.vg.json', { actions: false }).catch(console.error);
+    
     vegaEmbed('#rose_accommodation_vis', 'js/rose_chart.vg.json', { actions: false }).catch(console.error);
   </script>
 </body>

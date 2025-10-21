@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "config": {
+    "title": {
+      "fontSize": 24,
+      "fontWeight": "bold"
+    },
+    "legend": {
+      "titleFontSize": 14,
+      "labelFontSize": 12
+    },
+    "axis": {
+      "titleFontSize": 14,
+      "titleFontWeight": "bold",
+      "labelFontSize": 12
+    }
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/main_reason_trips_spending.csv"
+  },
+  "params": [
+    {
+      "name": "valueType",
+      "value": "Visitors",
+      "bind": {
+        "input": "select",
+        "options": ["Visitors", "Spend"],
+        "labels": ["Visitors", "Spend"],
+        "name": "Show: "
+      }
+    }
+  ],
+  "transform": [
+    { "filter": "datum.Type == valueType" }
+  ],
+  "mark": {
+    "type": "point",
+    "shape": "M0,-1 L0.5,0.5 L0,0.3 L-0.5,0.5 Z",
+    "filled": true,
+    "stroke":"darkblue",
+    "strokeWidth":0.5
+  },
+  "encoding": {
+    "x": { "field": "Year", "type": "ordinal", "title": "Year" },
+    "y": { "field": "Reason", "type": "nominal", "title": "Reason for Travel" },
+    "size": { 
+      "field": "Value", 
+      "type": "quantitative",
+      "title": "Value",
+      "scale": {"type": "sqrt", "range": [200, 2000]}
+    },
+    "color": { 
+      "field": "Value",
+      "type": "quantitative",
+      "scale": {"scheme": "blues"}
+    },
+    "tooltip": [
+      { "field": "Year" },
+      { "field": "Reason" },
+      { "field": "Type" },
+      { "field": "Value", "type": "quantitative", "format": "," }
+    ]
+  },
+  "width": 650,
+  "height": 400,
+  "config": {
+    "axis": { "labelFontSize": 12, "titleFontSize": 14, "titleFontWeight": "bold" },
+    "legend": { "labelFontSize": 12, "titleFontSize": 14 }
+  }
+}

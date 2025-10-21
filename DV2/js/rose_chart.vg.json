@@ -1,6 +1,20 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Rose chart comparing accommodation types in 2019 vs 2024",
+  "config": {
+    "title": {
+      "fontSize": 24,
+      "fontWeight": "bold"
+    },
+    "legend": {
+      "titleFontSize": 14,
+      "labelFontSize": 12
+    },
+    "axis": {
+      "titleFontSize": 14,
+      "titleFontWeight": "bold",
+      "labelFontSize": 12
+    }
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/type_of_accomodation.csv",
     "format": {"type": "csv"}

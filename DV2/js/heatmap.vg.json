@@ -1,7 +1,22 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "width": 750, 
+  "width": 650, 
   "height": 400,
+  "config": {
+    "title": {
+      "fontSize": 24,
+      "fontWeight": "bold"
+    },
+    "legend": {
+      "titleFontSize": 14,
+      "labelFontSize": 12
+    },
+    "axis": {
+      "titleFontSize": 14,
+      "titleFontWeight": "bold",
+      "labelFontSize": 12
+    }
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/expenditure_breakdown_by_reason.csv",
     "format": {"type": "csv"}
