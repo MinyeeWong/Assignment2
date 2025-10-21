@@ -16,7 +16,7 @@
     }
   },
   "width": 750, 
-  "height": 600,
+  "height": 400,
   "layer": [
     {
       "data": { "values": [{}] },
@@ -25,7 +25,7 @@
         "x": { "value": 240 },
         "x2": { "value": 390 }, 
         "y": { "value": 0 },
-        "y2": { "value": 600 } 
+        "y2": { "value": 400 } 
       }
     },
     {
