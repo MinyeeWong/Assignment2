@@ -76,8 +76,8 @@
             "align": "left",
             "dx": 5,
             "dy": -160,
-            "fontSize": 13,
-            "font": "Arial",
+            "fontSize": 14,
+            "font": "Roboto, 'Open Sans'",
             "color": "red"
           },
           "encoding": {
@@ -125,8 +125,8 @@
             "align": "left",
             "dx": 5,
             "dy": -200,
-            "fontSize": 13,
-            "font": "Arial",
+            "fontSize": 14,
+            "font": "Roboto, 'Open Sans'",
             "color": "red"
           },
           "encoding": {
