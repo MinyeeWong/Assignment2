@@ -1,45 +1,49 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Heatmap of Reason vs Year for Visitors or Spend, switchable via dropdown.",
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 750, 
+  "height": 400,
   "data": {
-    "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/main_reason_trips_spending.csv"
+    "url": "https://raw.githubusercontent.com/MinyeeWong/Assignment2/refs/heads/main/DV2/data/expenditure_breakdown_by_reason.csv",
+    "format": {"type": "csv"}
   },
-  "params": [
-    {
-      "name": "valueType",
-      "value": "Visitors",
-      "bind": {
-        "input": "select",
-        "options": ["Visitors", "Spend"],
-        "labels": ["Visitors", "Spend"],
-        "name": "Show: "
-      }
-    }
-  ],
   "transform": [
-    { "filter": "datum.Type == valueType" }
+    {
+      "fold": [
+        "Holiday",
+        "Visiting friends and relatives",
+        "Business",
+        "Education",
+        "Other purpose(c)"
+      ],
+      "as": ["Purpose", "Value"]
+    },
+    {
+      "calculate": "datum.Value == 'np' ? 0 : toNumber(datum.Value)",
+      "as": "Value"
+    }
   ],
   "mark": "rect",
   "encoding": {
-    "x": { "field": "Year", "type": "ordinal", "title": "Year" },
-    "y": { "field": "Reason", "type": "nominal", "title": "Reason for Travel" },
-    "color": { 
-      "field": "Value", 
+    "x": {
+      "field": "Purpose",
+      "type": "ordinal",
+      "title": "Purpose"
+    },
+    "y": {
+      "field": "Expenditure ($M)",
+      "type": "ordinal",
+      "title": "Expenditure Type"
+    },
+    "color": {
+      "field": "Value",
       "type": "quantitative",
-      "title": {"signal": "valueType"},
-      "scale": {"scheme": "blues"}
+      "scale": {"scheme": "blues"},
+      "title": "Expenditure ($M)"
     },
     "tooltip": [
-      { "field": "Year", "type": "ordinal" },
-      { "field": "Reason", "type": "nominal" },
-      { "field": "Type", "type": "nominal" },
-      { "field": "Value", "type": "quantitative", "format": "," }
+      {"field": "Expenditure ($M)", "title": "Expenditure Type"},
+      {"field": "Purpose"},
+      {"field": "Value", "title": "Amount"}
     ]
-  },
-  "width": 750,
-  "height": 400,
-  "config": {
-    "axis": { "labelFontSize": 12, "titleFontSize": 14, "titleFontWeight": "bold" },
-    "legend": { "labelFontSize": 12, "titleFontSize": 14 }
   }
 }
